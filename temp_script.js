@@ -1,8 +1,8 @@
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+//var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 // Wegmans' Request for all Products
 var request = new XMLHttpRequest();
-request.open('GET', 'https://api.wegmans.io/products/categories?api-version=2018-10-18', true);
+request.open('GET', 'https://api.wegmans.io/products/categories/561?api-version=2018-10-18', true);
 request.setRequestHeader('Cache-Control', 'no-cache');
 request.setRequestHeader('Subscription-Key', 'd9fef061c16746a8baa2685dc8418ebb');
 
