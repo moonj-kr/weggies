@@ -11,7 +11,7 @@ request.onload = function () {
 }
 request.send();
 
-
+/*
 // Jack Request ADD
 var addJackRequest = new XMLHttpRequest();
 
@@ -30,6 +30,7 @@ getJackRequest.onload = function () {
 	console.log("return", getJackRequest.response);
 }
 getJackRequest.send();
+*/
 
 function copyClipBoard(){
     var copyText = document.getElementById("shareableLink");
