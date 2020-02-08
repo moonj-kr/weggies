@@ -1,0 +1,25 @@
+{
+  "name": "weggies",
+  "version": "1.0.0",
+  "description": "",
+  "main": "temp_script.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0",
+    "xmlhttprequest": "^1.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moonj-kr/weggies.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/moonj-kr/weggies/issues"
+  },
+  "homepage": "https://github.com/moonj-kr/weggies#readme"
+}
