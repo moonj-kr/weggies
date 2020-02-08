@@ -4,28 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="temp_styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap" rel="stylesheet">
     <title>Weggies uwu</title>
 </head>
+<script src="temp_script.js"></script>
 <body>
     <nav>
-        <ul>
-            <li>logo</li>
-            <li>home</li>
-            <li>cart</li>
-            <li>space</li>
-            <li>space</li>
-            <li>space</li>
-            <li>space</li>
+        <div class="logo">
+            <img src="Wegmans-Logo.png" alt="wegmans-logo">
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="">Stores</a>
+            </li>
+            <li>
+                <a href="">Pharmacy</a>
+            </li>
+            <li>
+                <a href="">Meals 2Go</a>
+            </li>
+            <li>
+                <a href="">Recipes</a>
+            </li>
+            <li>
+                <a href="">Digital Coupons</a>
+            </li>
+            <li>
+                <a href="">Careers</a>
+            </li>
         </ul>
     </nav>
-    <input type="text" name="name" readonly="readonly">
-    <div class="container" id="container">
-        <div class="products" id="products">
-            <p>products</p>
+    <input type="text" class="shareableLink" id="shareableLink" value="www.wegmans.com/youcart1231351312" onclick="copyClipBoard()" readonly>    
+    <div class="container">
+        <div class="products">
+            
         </div>
-        <div class="cart" id="cart">
-            <p>your cart</p>
+        <div class="cart">
+            
         </div>
-        <input type="submit">
     </div>
+
+</body>
 </html>
