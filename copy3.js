@@ -1,0 +1,142 @@
+const request = require('request-promise-native');
+
+
+async function run() {
+	// Wegmans' Request for all Products
+	// request.open('GET', 'https://api.wegmans.io/products/search?query=Bread&api-version=2018-10-18&subscription-key=d9fef061c16746a8baa2685dc8418ebb', true);
+	const url = 'https://api.wegmans.io/products/search?query=Bread&api-version=2018-10-18&subscription-key=d9fef061c16746a8baa2685dc8418ebb'
+	const options = {
+		uri: url,
+		method: 'GET',
+		headers: {
+			'Cache-Control': 'no-cache',
+			'Subscription-Key': 'd9fef061c16746a8baa2685dc8418ebb'
+		}
+	}
+	let res = await request(options);
+	console.log(res);
+	//console.log(typeof(res));
+	for(var items in res) {
+		if(res.results[items]._links === undefined) {
+			console.log(res.results[items]._links[0].href);
+		} else {
+			console.log("undefined");
+		}
+	}
+
+	//let link = await getLink(food.results[items]._links[0].href);
+
+
+
+	// request.setRequestHeader('Cache-Control', 'no-cache');
+	// request.setRequestHeader('Subscription-Key', 'd9fef061c16746a8baa2685dc8418ebb');
+
+	// request.onload = function () {
+
+/*
+		var food = JSON.parse(request.responseText);
+
+		var danielArray = [];
+		for (var items in (food.results)) {
+			//console.log(food.results[items]._links[0].href);
+			//console.log(typeof(food.results[items]._links[0].href));
+			var x = getLink(food.results[items]._links[0].href);
+			console.log(food.results[items]._links[0].href);
+			console.log("asdfasfsafdafafsd: " + x);
+
+		}
+	}*/
+	// request.send();
+//}
+
+
+
+function returnProductToDaniel() {
+	var food = JSON.parse(request.responseText);
+	//console.log("danileILY: ", request.responseText);
+}
+
+async function getLink(url) {
+	//const url = 'https://api.wegmans.io/products/search?query=Bread&api-version=2018-10-18&subscription-key=d9fef061c16746a8baa2685dc8418ebb'
+	const options = {
+		uri: url,
+		method: 'GET',
+		headers: {
+			'Cache-Control': 'no-cache',
+			'Subscription-Key': 'd9fef061c16746a8baa2685dc8418ebb'
+		}
+	}
+	let res = await request(options);
+	console.log(res);
+	console.log(typeof(res));
+
+
+
+
+	var linkRequest = new XMLHttpRequest();
+	var fullURL = "https://api.wegmans.io" + url;
+	linkRequest.open('GET', fullURL, true);
+	linkRequest.setRequestHeader('Cache-Control', 'no-cache');
+	linkRequest.setRequestHeader('Subscription-Key', 'd9fef061c16746a8baa2685dc8418ebb');
+
+	returnVal = (JSON.parse(linkRequest.responseText)).tradeIdentifiers;
+	console.log(linkRequest);
+
+	linkRequest.onload = function () {
+		//console.log("link", (JSON.parse(linkRequest.responseText))._links);
+		//console.log(typeof(linkRequest.responseText));
+		//returnVal = (JSON.parse(linkRequest.responseText)).tradeIdentifiers;
+		if (obj) {
+			if (obj[0]) {
+				if (obj[0].images) {
+					//console.log("yeet: ", obj[0].images[(obj[0].images).length -1]);
+					//console.log(typeof(obj[0].images[0]));
+					//console.log(obj[0].images[(obj[0].images).length -1]);
+					//let link = obj[0].images[(obj[0].images).length -1];
+					returnVal = obj[0].images[(obj[0].images).length - 1];
+					//return link;
+					console.log("print link: " + link);
+					//console.log(typeof(link));
+				}
+			}
+		} else {
+			return ("myFace");
+		}
+	}
+	//	console.log(link);
+	//	
+	//	return returnVal;
+	//console.log(returnVal);
+	linkRequest.send();
+	//console.log("print: " + link);
+}}
+
+/*
+// Jack Request ADD
+var addJackRequest = new XMLHttpRequest();
+
+addJackRequest.open('ADD', 'localhost:5000', true);
+addJackRequest.onload = function () {
+	console.log("return", addJackRequest.response);
+}
+addJackRequest.send();
+
+
+// Jack Request GET
+var getJackRequest = new XMLHttpRequest();
+
+getJackRequest.open('GET', 'localhost:5000', true);
+getJackRequest.onload = function () {
+	console.log("return", getJackRequest.response);
+}
+getJackRequest.send();
+*/
+function copyClipBoard() {
+	var copyText = document.getElementById("shareableLink");
+	copyText.select()
+	document.execCommand("copy");
+	alert("Copied!");
+}
+
+
+run();
