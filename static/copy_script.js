@@ -1,4 +1,4 @@
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+//var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 //var waterfall = require('async-waterfall');
 
 // Wegmans' Request for all Products
@@ -7,6 +7,7 @@ function wegmansRequest() {
 	request.open('GET', 'https://api.wegmans.io/products/search?query=Bread&api-version=2018-10-18&subscription-key=d9fef061c16746a8baa2685dc8418ebb', true);
 	request.setRequestHeader('Cache-Control', 'no-cache');
 	request.setRequestHeader('Subscription-Key', 'd9fef061c16746a8baa2685dc8418ebb');
+	request.setRequestHeader('Access-Control-Allow-Origin', '*');
 
 	request.onload = function () {
 		var food = JSON.parse(request.responseText);
@@ -52,8 +53,10 @@ function getLink(url, skuID) {
 	linkRequest.open('GET', fullURL, true);
 	linkRequest.setRequestHeader('Cache-Control', 'no-cache');
 	linkRequest.setRequestHeader('Subscription-Key', 'd9fef061c16746a8baa2685dc8418ebb');
-
-	linkRequest.onload = function( skuID) {
+	linkRequest.setRequestHeader('Access-Control-Allow-Origin', '*');
+	//console.log(skuID);
+	var onDelegate = function(skuID){
+		// console.log(skuID);
 		var obj = (JSON.parse(linkRequest.responseText)).tradeIdentifiers;
 		if (obj) {
 			if (obj[0]) {
@@ -62,28 +65,54 @@ function getLink(url, skuID) {
 					//console.log(typeof(obj[0].images[0]));
 					//console.log(obj[0].images[(obj[0].images).length -1]);
 					let link = obj[0].images[(obj[0].images).length -1];
+					if (link != null) {
+						let div = document.getElementById(skuID);
+						let myimg = div.getElementsByTagName('img')[0];
+						myimg.src = link;
+					}
+					// console.log(link);
 					//returnVal = obj[0].images[(obj[0].images).length - 1];
 					//return link;
+					console.log(link);
 					let div = document.getElementById(skuID);
-					div.src = link;
+					console.log(div);
+					// console.log(skuID);
+					// console.log(div);
 				//	console.log("print link: " + link);
 				//	arrayLink.push(link);
 					//console.log(typeof(link));
-				} else {
-					arrayLink.push(0);
-				}
-			} else {
-				arrayLink.push(0);
-			}
-		} else {
-			arrayLink.push(0);
-		}
+				} 
+			} 
+		} 
 	}
-	linkRequest.send();
-	
+	 linkRequest.onload = function() {
+		 onDelegate(skuID)
+	 }//function(skuID) {
+	// 	var obj = (JSON.parse(linkRequest.responseText)).tradeIdentifiers;
+	// 	if (obj) {
+	// 		if (obj[0]) {
+	// 			if (obj[0].images) {
+	// 				//console.log("yeet: ", obj[0].images[(obj[0].images).length -1]);
+	// 				//console.log(typeof(obj[0].images[0]));
+	// 				//console.log(obj[0].images[(obj[0].images).length -1]);
+	// 				let link = obj[0].images[(obj[0].images).length -1];
+	// 				// console.log(link);
+	// 				//returnVal = obj[0].images[(obj[0].images).length - 1];
+	// 				//return link;
+	// 				let div = document.getElementById(skuID);
+	// 				console.log(skuID);
+	// 				// console.log(div);
+	// 			//	console.log("print link: " + link);
+	// 			//	arrayLink.push(link);
+	// 				//console.log(typeof(link));
+	// 			} 
+	// 		} 
+	// 	} 
+	// }
+	linkRequest.send();	
 }
 
-getLink("/products/75634?api-version=2018-10-18&subscription-key=d9fef061c16746a8baa2685dc8418ebb");
+// getLink("/products/75634?api-version=2018-10-18&subscription-key=d9fef061c16746a8baa2685dc8418ebb");
 
 // take in sku, return name and image
 /*
@@ -118,7 +147,7 @@ function copyClipBoard(){
 
 function insertIntoItems(item){
     var box = document.getElementById("products");
-    console.log(box);
+    // console.log(box);
     let div_box = document.createElement("DIV");
     div_box.setAttribute("id", item[0]);
     div_box.setAttribute("class", "item-container");
@@ -126,12 +155,13 @@ function insertIntoItems(item){
     let image = document.createElement("IMG");
     let paragraph = document.createElement("P");
     paragraph.innerHTML =  innerHTML = item[1];
-    image.alt = ":D";
+	image.alt = ":D";
+	image.src = "https://via.placeholder.com/150";
     div_box.appendChild(id);
     div_box.appendChild(image);
     div_box.appendChild(paragraph);
 	box.appendChild(div_box);
-	getLink(item[2], item[1]);
+	getLink(item[2], item[0]);
 }
 
 function action(id){
@@ -140,11 +170,15 @@ function action(id){
 }
 
 function jisooks(){
-	for (var i = 0; i < global.length; i++){
-		console.log(global[i]);
+	for (var i = 0; i < 24; i++){
+		// console.log(global[i]);
 		insertIntoItems(global[i]);
 	}
 }
-weggies();
-setTimeout(jisooks, 1000);
-//module.exports.wegmansRequest = wegmansRequest;
+
+function bigBoiFunction(){
+	weggies();
+	setTimeout(jisooks, 5000);
+}
+
+bigBoiFunction()
