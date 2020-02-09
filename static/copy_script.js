@@ -1,4 +1,4 @@
-//var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 //var waterfall = require('async-waterfall');
 
 // Wegmans' Request for all Products
@@ -29,6 +29,7 @@ function wegmansRequest() {
 
 var global;
 exports.global = global;
+var arrayLink = [];
 
 function returnDatabaseResult(value) {
 	global = value;
@@ -44,22 +45,50 @@ function weggies() {
 		return global;
 	},5000) );
 }
-
 //console.log("TESTTT: " + weggies());
+//
 
-function getLink(url) {
+function getLink(url, skuID) {
 	var linkRequest = new XMLHttpRequest();
 	var fullURL = "https://api.wegmans.io" + url;
 	linkRequest.open('GET', fullURL, true);
 	linkRequest.setRequestHeader('Cache-Control', 'no-cache');
 	linkRequest.setRequestHeader('Subscription-Key', 'd9fef061c16746a8baa2685dc8418ebb');
 
-	linkRequest.onload = function() {
-
+	linkRequest.onload = function( skuID) {
+		var obj = (JSON.parse(linkRequest.responseText)).tradeIdentifiers;
+		if (obj) {
+			if (obj[0]) {
+				if (obj[0].images) {
+					//console.log("yeet: ", obj[0].images[(obj[0].images).length -1]);
+					//console.log(typeof(obj[0].images[0]));
+					//console.log(obj[0].images[(obj[0].images).length -1]);
+					let link = obj[0].images[(obj[0].images).length -1];
+					//returnVal = obj[0].images[(obj[0].images).length - 1];
+					//return link;
+					let div = document.getElementById(skuID);
+					div.src = link;i
+				//	console.log("print link: " + link);
+				//	arrayLink.push(link);
+					//console.log(typeof(link));
+				} else {
+					arrayLink.push(0);
+				}
+			} else {
+				arrayLink.push(0);
+			}
+		} else {
+			arrayLink.push(0);
+		}
 	}
 	linkRequest.send();
+	
 }
 
+getLink("/products/75634?api-version=2018-10-18&subscription-key=d9fef061c16746a8baa2685dc8418ebb");
+
+// take in sku, return name and image
+/*
 function addJackRequest() {
 	var addJackRequest = new XMLHttpRequest();
 
@@ -81,7 +110,7 @@ function getJackRequest() {
 }
 getJackRequest.send();
 
-
+*/
 function copyClipBoard(){
     var copyText = document.getElementById("shareableLink");
     copyText.select()
