@@ -48,11 +48,8 @@ def getAllProduct():
 @app.route('/groupShop')
 def getGroupShop():
     backURL = request.args.get("url")
-    print(backURL)
     url = "localhost:5000/groupShop/"+backURL
     return render_template("example_index.html", endingURL=backURL, url = url)
-
-
 
 @app.route('/')
 def default():

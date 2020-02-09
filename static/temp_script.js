@@ -39,17 +39,35 @@ function copyClipBoard(){
     document.execCommand("copy");
     alert("Copied!");
 }
+var listOfSKUVal;
+var dataFromWegman;
 
 function returnDataBaseResult(returnedVal){
-    return returnedVal;
+    listOfSKUVal = returnedVal;
 }
 
+function manipulateHTML(){
+    for SKU in listOfSKUVal:
+        getDataFromWegman(sku);
+
+
+}
+
+function getDataFromWegman(sku){
+}
+
+
+
+function handleGetAllProduct(url) {
+    getAllProduct(url);
+    setTimeout(manipulateHTML(),500);
+}
 function getAllProduct(url) {
     var getJackRequest = new XMLHttpRequest();
     getJackRequest.open('GET', 'http://127.0.0.1:5000/getAllProduct?url=back', true);
     getJackRequest.setRequestHeader('Access-Control-Allow-Origin', '*');
     getJackRequest.onload = function () {
-        returnDataBaseResult(getJackRequest.response)
+        returnDataBaseResult(getJackRequest.response,true)
     };
     getJackRequest.send();
 }
@@ -62,5 +80,4 @@ function addProductToURL(url, productID) {
 //        console.log("return", getJackRequest.response);
 //    }
     getJackRequest.send();
-    print(getJackRequest.responseText);
 }

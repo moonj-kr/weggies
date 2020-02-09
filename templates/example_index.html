@@ -10,7 +10,6 @@
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-<script src="/static/temp_script.js"></script>
 <body>
     <nav>
         <div class="logo">
@@ -39,6 +38,7 @@
     </nav>
     <input type="text" class="shareableLink" id="shareableLink" value={{url}} onclick="copyClipBoard()" readonly>
     <div class="container">
+        <button onclick="getAllProduct()"> Button</button>
         <div class="products" id="products">
         </div>
         <div class="cart" id="cart">
@@ -46,9 +46,10 @@
         <div class="hiddenVal" id="nice" value = {{endingURL}}>
         </div>
         <div type="hidden" id="id" class="id" name="id">
-    </div>
+        </div>
     </div>
 </body>
+<script src="/static/temp_script.js"></script>
 <script src="/static/testing.js"></script>
 <script type="text/javascript" src="/static/test.js"></script>
 </html>
