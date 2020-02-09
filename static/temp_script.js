@@ -7,7 +7,7 @@ request.setRequestHeader('Cache-Control', 'no-cache');
 request.setRequestHeader('Subscription-Key', 'd9fef061c16746a8baa2685dc8418ebb');
 
 request.onload = function () {
-	console.log("return", request.responseText);
+	//console.log("return", request.responseText);
 }
 request.send();
 
@@ -45,14 +45,12 @@ var dataFromWegman;
 function returnDataBaseResult(returnedVal){
     listOfSKUVal = returnedVal;
 }
-
+/*
 function manipulateHTML(){
     for SKU in listOfSKUVal:
         getDataFromWegman(sku);
-
-
 }
-
+*/
 function getDataFromWegman(sku){
 }
 
@@ -83,14 +81,18 @@ function jackFunction (sku) {
 	request.setRequestHeader('Subscription-Key', 'd9fef061c16746a8baa2685dc8418ebb');
 	request.onload = function () {
 		var food = JSON.parse(request.responseText);
+		var links = food._links[0].href;
 		var jackArray = [food.name,food._links[0].href];
+	console.log("jackArray: " + jackArray);
 	returnDatabaseResult(jackArray);
 	}
 	request.send();
 }
 
 function returnDatabaseResult(value) {
-	jack.append(value);
+	jack.push(value);
+	console.log("updatedJackArray: " + jack);
+
 }
 
 function getLink(url, skuID) {
@@ -116,19 +118,23 @@ function getLink(url, skuID) {
 }
 
 function weggiesJack(listOfSKU) {
-    for sku in listOfSKU:
-	    jackFunction(sku);
+	console.log("list: " + listOfSKU);
+	for(var i = 0; i < listOfSKU.length; i++) {
+	    jackFunction(listOfSKU[i]);
+	}
 	return(
 	setTimeout(function() {
+		console.log("JACK: " + jack);
 		return jack;
 	},1000) );
 }
 var outSideListOfSKU = ['75639','499968']
 function bigBoiFunction() {
+	console.log("INSIDE");
 //    weggiesJack(listOfSKU);
       weggiesJack(outSideListOfSKU);
       setTimeout(function() {
-        console.log(jack);
+        console.log("LOG: " + jack);
        },3000);
 }
 
@@ -140,4 +146,3 @@ bigBoiFunction();
 //        setInterval(function() {
 //            bigBoiFunction();
 //        }, 2000);
-//    });
