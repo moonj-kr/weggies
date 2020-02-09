@@ -20,10 +20,31 @@ function wegmansRequest() {
 			danielArray.push(item);
 		}
 	//console.log(danielArray);
-		return(danielArray);
+		returnDatabaseResult(danielArray);
+		//return danielArray;
 	}
-request.send();
+
+	request.send();
 }
+
+var global;
+exports.global = global;
+
+function returnDatabaseResult(value) {
+	global = value;
+	//console.log(global);
+}
+
+
+function weggies() {
+	wegmansRequest()
+	return(
+	setTimeout(function() {
+		return global;
+	},5000) );
+}
+
+//console.log("TESTTT: " + weggies());
 
 function getLink(url) {
 	var linkRequest = new XMLHttpRequest();
@@ -33,30 +54,32 @@ function getLink(url) {
 	linkRequest.setRequestHeader('Subscription-Key', 'd9fef061c16746a8baa2685dc8418ebb');
 
 	linkRequest.onload = function() {
+
 	}
 	linkRequest.send();
 }
 
-/*
-// Jack Request ADD
-var addJackRequest = new XMLHttpRequest();
+function addJackRequest() {
+	var addJackRequest = new XMLHttpRequest();
 
-addJackRequest.open('ADD', 'localhost:5000', true);
-addJackRequest.onload = function () {
-	console.log("return", addJackRequest.response);
+	addJackRequest.open('ADD', 'localhost:5000', true);
+	addJackRequest.onload = function () {
+		console.log("return", addJackRequest.response);
+	}
+	addJackRequest.send();
 }
-addJackRequest.send();
 
+function getJackRequest() {
+	var getJackRequest = new XMLHttpRequest();
 
-// Jack Request GET
-var getJackRequest = new XMLHttpRequest();
-
-getJackRequest.open('GET', 'localhost:5000', true);
-getJackRequest.onload = function () {
-	console.log("return", getJackRequest.response);
+	getJackRequest.open('GET', 'localhost:5000', true);
+	getJackRequest.onload = function () {
+		console.log("return", getJackRequest.response);
+	}
+	getJackRequest.send();
 }
 getJackRequest.send();
-*/
+
 
 function copyClipBoard(){
     var copyText = document.getElementById("shareableLink");
