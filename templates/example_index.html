@@ -1,49 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="temp_styles.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='stylesheets/temp_styles.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap" rel="stylesheet">
     <title>Weggies uwu</title>
 </head>
-<script src="temp_script.js"></script>
 <body>
     <nav>
         <div class="logo">
-            <img src="Wegmans-Logo.png" alt="wegmans-logo">
+            <a href="https://www.wegmans.com/"><img src="/static/Wegmans-Logo.png" alt="wegmans-logo"></a>
         </div>
         <ul class="nav-links">
             <li>
-                <a href="">Stores</a>
+                <a href="https://www.wegmans.com/stores/">Stores</a>
             </li>
             <li>
-                <a href="">Pharmacy</a>
+                <a href="https://www.wegmans.com/pharmacy/">Pharmacy</a>
             </li>
             <li>
-                <a href="">Meals 2Go</a>
+                <a href="https://meals2go.com/#/https://shop.wegmans.com/shop/recipes">Meals 2Go</a>
             </li>
             <li>
-                <a href="">Recipes</a>
+                <a href="https://shop.wegmans.com/shop/recipes">Recipes</a>
             </li>
             <li>
-                <a href="">Digital Coupons</a>
+                <a href="https://shop.wegmans.com/shop/coupons">Digital Coupons</a>
             </li>
             <li>
-                <a href="">Careers</a>
+                <a href="https://jobs.wegmans.com/">Careers</a>
             </li>
         </ul>
     </nav>
-    <input type="text" class="shareableLink" id="shareableLink" value="www.wegmans.com/youcart1231351312" onclick="copyClipBoard()" readonly>    
+    <input type="text" class="shareableLink" id="shareableLink" value="www.wegmans.com/youcart1231351312" onclick="copyClipBoard()" readonly>
+    <button onclick="testGetAllProduct()"> Button</button>
+
     <div class="container">
         <div class="products">
-            
         </div>
-        <div class="cart">
+        <div class="cart" id="cart">
             
         </div>
     </div>
 
 </body>
+<script src="/static/temp_script.js"></script>
 </html>

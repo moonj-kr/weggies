@@ -1,5 +1,6 @@
 from flask import Flask,request,render_template,Response,jsonify
 import os
+from flask_cors import CORS
 import sqlalchemy as db
 import json
 cwd = os.getcwd()
@@ -11,7 +12,7 @@ urlToProductAgainTable = db.Table('urlToProductAgain', metadata,
                                   db.Column('id',db.Integer,primary_key=True),
                                   db.Column('URL',db.String(255)),
                                   db.Column('SKU', db.Integer))
-
+CORS(app)
 """
 Sample Request:
 curl -X POST localhost:5000/add -d "url=godblesss&sku=123"
