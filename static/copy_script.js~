@@ -2,28 +2,26 @@ var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var waterfall = require('async-waterfall');
 
 // Wegmans' Request for all Products
-function wegmansRequest() {
-	var request = new XMLHttpRequest();
-	request.open('GET', 'https://api.wegmans.io/products/search?query=Bread&api-version=2018-10-18&subscription-key=d9fef061c16746a8baa2685dc8418ebb', true);
-	request.setRequestHeader('Cache-Control', 'no-cache');
-	request.setRequestHeader('Subscription-Key', 'd9fef061c16746a8baa2685dc8418ebb');
+var request = new XMLHttpRequest();
+request.open('GET', 'https://api.wegmans.io/products/search?query=Bread&api-version=2018-10-18&subscription-key=d9fef061c16746a8baa2685dc8418ebb', true);
+request.setRequestHeader('Cache-Control', 'no-cache');
+request.setRequestHeader('Subscription-Key', 'd9fef061c16746a8baa2685dc8418ebb');
 
-	request.onload = function () {
-		var food = JSON.parse(request.responseText);
+request.onload = function () {
+	var food = JSON.parse(request.responseText);
 
-		var danielArray = [];
+	var danielArray = [];
 	// LINK TO JSON OBJ WITH IMAGE: food.results[items]._links[0].href
 
-		for(var items in (food.results)) {
-			var url = food.results[items]._links[0].href // LINK TO JSON OBJ WITH IMAGE
-			var item = [food.results[items].sku, food.results[items].name, url];
-			danielArray.push(item);
-		}
-	//console.log(danielArray);
-		return(danielArray);
+	for(var items in (food.results)) {
+		var url = food.results[items]._links[0].href // LINK TO JSON OBJ WITH IMAGE
+		var item = [food.results[items].sku, food.results[items].name, url];
+		danielArray.push(item);
 	}
-request.send();
+	//console.log(danielArray);
+	return(danielArray);
 }
+request.send();
 
 function getLink(url) {
 	var linkRequest = new XMLHttpRequest();
