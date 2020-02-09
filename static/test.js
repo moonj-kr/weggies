@@ -6,13 +6,13 @@ function insertIntoItems(item){
     let div_box = document.createElement("DIV");
     div_box.setAttribute("class", "item-container");
     div_box.setAttribute("onclick", "action()");
-    let paragraph = document.createElement("P");
-    paragraph.innerHTML =  innerHTML = item[0]
     let image = document.createElement("IMG");
+    let paragraph = document.createElement("P");
+    paragraph.innerHTML =  innerHTML = item[0];
     image.src = item[1];
     image.alt = ":D";
-    div_box.appendChild(paragraph);
     div_box.appendChild(image);
+    div_box.appendChild(paragraph);
     box.appendChild(div_box);
 }
 
