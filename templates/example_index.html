@@ -37,16 +37,17 @@
             </li>
         </ul>
     </nav>
-    <input type="text" class="shareableLink" id="shareableLink" value="www.wegmans.com/youcart1231351312" onclick="copyClipBoard()" readonly>    
+    <input type="text" class="shareableLink" id="shareableLink" value={{url}} onclick="copyClipBoard()" readonly>
     <div class="container">
         <div class="products" id="products">
-            
         </div>
         <div class="cart" id="cart">
-            
         </div>
+        <div class="hiddenVal" id="nice" value = {{endingURL}}>
+        </div>
+        <div type="hidden" id="id" class="id" name="id">
     </div>
-    <input type="hidden" id="id" class="id" name="id" value={{ endingURL }}>
+    </div>
 </body>
 <script src="/static/testing.js"></script>
 <script type="text/javascript" src="/static/test.js"></script>

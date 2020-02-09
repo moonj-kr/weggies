@@ -1,4 +1,4 @@
-import {getAllProduct, addProductToURL} from './temp_script.js';
+//import {getAllProduct, addProductToURL} from './temp_script.js';
 let testdata = [["1234", "name","https://via.placeholder.com/150"], ["4321","name1","https://via.placeholder.com/150"], ["5123","name2","https://via.placeholder.com/150"],["9191","name","https://via.placeholder.com/150"], ["1010","name1","https://via.placeholder.com/150"], ["5135","name2","https://via.placeholder.com/150"],["1424","name","https://via.placeholder.com/150"], ["1234","name1","https://via.placeholder.com/150"], ["1234","name2","https://via.placeholder.com/150"],["1234","name","https://via.placeholder.com/150"], ["1234","name1","https://via.placeholder.com/150"], ["1234","name2","https://via.placeholder.com/150"],["1234","name","https://via.placeholder.com/150"], ["1234","name1","https://via.placeholder.com/150"], ["1234","name2","https://via.placeholder.com/150"]];
 
 function insertIntoItems(item){
@@ -20,8 +20,8 @@ function insertIntoItems(item){
 }
 
 function action(id){
-    const backURL = document.getElementById("id").nodeValue
-    console.log(backURL)
+    const backURL = document.getElementById("id").value;
+    console.log(backURL);
 }
 
 for (var i = 0; i < testdata.length; i++){

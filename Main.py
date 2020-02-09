@@ -49,7 +49,8 @@ def getAllProduct():
 def getGroupShop():
     backURL = request.args.get("url")
     print(backURL)
-    return render_template("example_index.html", endingURL=backURL)
+    url = "localhost:5000/groupShop/"+backURL
+    return render_template("example_index.html", endingURL=backURL, url = url)
 
 
 
