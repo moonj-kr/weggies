@@ -47,6 +47,7 @@ nav{
     width: 70vw;
     height: 70vh;
     margin-left: 15%;
+    overflow: scroll;
 }
 
 .products{

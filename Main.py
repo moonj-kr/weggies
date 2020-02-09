@@ -3,6 +3,8 @@ import os
 from flask_cors import CORS
 import sqlalchemy as db
 import json
+import random
+import string
 cwd = os.getcwd()
 app = Flask(__name__)
 engine = db.create_engine('mysql+pymysql://root:AgtnJqhDe97oaf7a@127.0.0.1:3307/Wegman')
@@ -42,9 +44,15 @@ def getAllProduct():
         returnListOfSKU.append(result[2])
     return str(returnListOfSKU)
 
+
+
 @app.route('/')
 def default():
-    return render_template("example_index.html")
+    backURL = ""
+    for i in range(0,7):
+        backURL += random.choice(string.ascii_letters)
+    print(backURL)
+    return render_template("example_index.html",)
 
 def main():
     app.run()
