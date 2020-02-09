@@ -44,7 +44,7 @@ function returnDataBaseResult(returnedVal){
     return returnedVal;
 }
 
-function testGetAllProduct(url) {
+export function getAllProduct(url) {
     var getJackRequest = new XMLHttpRequest();
     getJackRequest.open('GET', 'http://127.0.0.1:5000/getAllProduct?url=back', true);
     getJackRequest.setRequestHeader('Access-Control-Allow-Origin', '*');
@@ -54,7 +54,7 @@ function testGetAllProduct(url) {
     getJackRequest.send();
 }
 
-function addProductToURL(url, productID) {
+export function addProductToURL(url, productID) {
     var getJackRequest = new XMLHttpRequest();
     getJackRequest.open('GET', 'http://127.0.0.1:5000/getAllProduct?url='+url, true);
     getJackRequest.setRequestHeader('Access-Control-Allow-Origin', '*');
