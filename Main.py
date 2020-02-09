@@ -26,7 +26,7 @@ def addValueToCart():
     for key in f:
         valueArray.append(f[key])
     backURL = valueArray[0]
-    skuId = valueArray[1]
+    skuId = (valueArray[1])
     insertIntoProduct = urlToProductAgainTable.insert().values(URL=backURL, SKU=skuId)
     conn.execute(insertIntoProduct)
     return Response("{'a':'b')", status=201)
