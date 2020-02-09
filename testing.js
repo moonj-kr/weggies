@@ -7,6 +7,6 @@ $(document).ready(
             $('#cart').text(
                     'I am getting refreshed every 3 seconds..! Random Number ==> '
                             + randomnumber);
-        }, 3000);
+        }, 1000);
     });
 
