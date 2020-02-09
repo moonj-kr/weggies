@@ -1,4 +1,5 @@
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+//var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+//var waterfall = require('async-waterfall');
 
 // Wegmans' Request for all Products
 function wegmansRequest() {
@@ -78,10 +79,14 @@ function getJackRequest() {
 	}
 	getJackRequest.send();
 }
+getJackRequest.send();
+
 
 function copyClipBoard(){
     var copyText = document.getElementById("shareableLink");
     copyText.select()
     document.execCommand("copy");
     alert("Copied!");
-}
+} 
+
+//module.exports.wegmansRequest = wegmansRequest;
