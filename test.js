@@ -1,9 +1,11 @@
-let testdata = ["name","https://via.placeholder.com/150"];
+let testdata = [["name","https://via.placeholder.com/150"], ["name1","https://via.placeholder.com/150"], ["name2","https://via.placeholder.com/150"],["name","https://via.placeholder.com/150"], ["name1","https://via.placeholder.com/150"], ["name2","https://via.placeholder.com/150"],["name","https://via.placeholder.com/150"], ["name1","https://via.placeholder.com/150"], ["name2","https://via.placeholder.com/150"],["name","https://via.placeholder.com/150"], ["name1","https://via.placeholder.com/150"], ["name2","https://via.placeholder.com/150"],["name","https://via.placeholder.com/150"], ["name1","https://via.placeholder.com/150"], ["name2","https://via.placeholder.com/150"]];
 
 function insertIntoItems(item){
     var box = document.getElementById("products");
     console.log(box);
     let div_box = document.createElement("DIV");
+    div_box.setAttribute("class", "item-container");
+    div_box.setAttribute("onclick", "action()");
     let paragraph = document.createElement("P");
     paragraph.innerHTML =  innerHTML = item[0]
     let image = document.createElement("IMG");
@@ -14,4 +16,10 @@ function insertIntoItems(item){
     box.appendChild(div_box);
 }
 
-insertIntoItems(testdata);
+function action(){
+    alert("This item was added");
+}
+
+for (var i = 0; i < testdata.length; i++){
+    insertIntoItems(testdata[i]);
+}

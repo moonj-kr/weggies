@@ -8,10 +8,6 @@ request.setRequestHeader('Subscription-Key', 'd9fef061c16746a8baa2685dc8418ebb')
 
 request.onload = function () {
     console.log("return", request.responseText);
-    let r = JSON.parse(request.responseText);
-    console.log(r.categories);
-    let array = r.categories;
-    document.getElementById("products").innerHTML = array[1].name;
 }
 request.send();
 
