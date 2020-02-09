@@ -40,14 +40,17 @@ function copyClipBoard(){
     alert("Copied!");
 }
 
+function returnDataBaseResult(returnedVal){
+    return returnedVal;
+}
+
 function testGetAllProduct(url) {
     var getJackRequest = new XMLHttpRequest();
     getJackRequest.open('GET', 'http://127.0.0.1:5000/getAllProduct?url=back', true);
     getJackRequest.setRequestHeader('Access-Control-Allow-Origin', '*');
     getJackRequest.onload = function () {
-        return getJackRequest.response;
-        console.log("return", getJackRequest.response);
-    }
+        returnDataBaseResult(getJackRequest.response)
+    };
     getJackRequest.send();
 }
 

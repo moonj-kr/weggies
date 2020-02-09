@@ -1,4 +1,4 @@
-from flask import Flask,request,render_template,Response,jsonify
+from flask import Flask,request,render_template,Response,jsonify, url_for, redirect
 import os
 from flask_cors import CORS
 import sqlalchemy as db
@@ -45,14 +45,21 @@ def getAllProduct():
     return str(returnListOfSKU)
 
 
+@app.route('/groupShop')
+def getGroupShop():
+    backURL = request.args.get("url")
+    print(backURL)
+    return render_template("example_index.html", endingURL=backURL)
+
+
 
 @app.route('/')
 def default():
     backURL = ""
     for i in range(0,7):
         backURL += random.choice(string.ascii_letters)
-    print(backURL)
-    return render_template("example_index.html",endingURL=backURL)
+    return redirect('/groupShop?url=' + backURL)
+    # return render_template("example_index.html",endingURL=backURL)
 
 def main():
     app.run()
