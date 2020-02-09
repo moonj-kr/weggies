@@ -52,7 +52,7 @@ def default():
     for i in range(0,7):
         backURL += random.choice(string.ascii_letters)
     print(backURL)
-    return render_template("example_index.html",)
+    return render_template("example_index.html",endingURL=backURL)
 
 def main():
     app.run()
