@@ -39,6 +39,7 @@ function weggies() {
 	wegmansRequest()
 	return(
 	setTimeout(function() {
+		//print global to test
 		return global;
 	},5000) );
 }
