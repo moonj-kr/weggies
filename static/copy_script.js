@@ -28,7 +28,6 @@ function wegmansRequest() {
 }
 
 var global;
-exports.global = global;
 
 function returnDatabaseResult(value) {
 	global = value;
@@ -78,7 +77,7 @@ function getJackRequest() {
 	}
 	getJackRequest.send();
 }
-getJackRequest.send();
+//getJackRequest.send();
 
 
 function copyClipBoard(){
@@ -88,4 +87,34 @@ function copyClipBoard(){
     alert("Copied!");
 } 
 
-//module.exports.wegmansRequest = wegmansRequest;
+function insertIntoItems(item){
+    var box = document.getElementById("products");
+    console.log(box);
+    let div_box = document.createElement("DIV");
+    div_box.setAttribute("id", item[0]);
+    div_box.setAttribute("class", "item-container");
+    div_box.setAttribute("onclick", "action(this.id)");
+    let image = document.createElement("IMG");
+    let paragraph = document.createElement("P");
+    paragraph.innerHTML =  innerHTML = item[1];
+    image.alt = ":D";
+    div_box.appendChild(id);
+    div_box.appendChild(image);
+    div_box.appendChild(paragraph);
+	box.appendChild(div_box);
+	getLink(item[2], item[1]);
+}
+
+function action(id){
+    const backURL = document.getElementById("id").value;
+    console.log(backURL);
+}
+
+function jisooks(){
+	for (var i = 0; i < global.length; i++){
+		console.log(global[i]);
+		insertIntoItems(global[i]);
+	}
+}
+weggies();
+setTimeout(jisooks, 1000);
