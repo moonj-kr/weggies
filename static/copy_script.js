@@ -2,9 +2,12 @@
 //var waterfall = require('async-waterfall');
 
 // Wegmans' Request for all Products
+const listOfCategory = ['Bread','Chicken','Dairy','Cereal']
 function wegmansRequest() {
 	var request = new XMLHttpRequest();
-	request.open('GET', 'https://api.wegmans.io/products/search?query=Bread&api-version=2018-10-18&subscription-key=d9fef061c16746a8baa2685dc8418ebb', true);
+	var Category = listOfCategory[Math.floor(Math.random()*4)]
+	console.log(Category);
+	request.open('GET', 'https://api.wegmans.io/products/search?query='+Category+'&api-version=2018-10-18&subscription-key=d9fef061c16746a8baa2685dc8418ebb', true);
 	request.setRequestHeader('Cache-Control', 'no-cache');
 	request.setRequestHeader('Subscription-Key', 'd9fef061c16746a8baa2685dc8418ebb');
 	request.setRequestHeader('Access-Control-Allow-Origin', '*');
@@ -56,7 +59,6 @@ function getLink(url, skuID) {
 	linkRequest.setRequestHeader('Access-Control-Allow-Origin', '*');
 	//console.log(skuID);
 	var onDelegate = function(skuID){
-		// console.log(skuID);
 		var obj = (JSON.parse(linkRequest.responseText)).tradeIdentifiers;
 		if (obj) {
 			if (obj[0]) {
@@ -70,17 +72,7 @@ function getLink(url, skuID) {
 						let myimg = div.getElementsByTagName('img')[0];
 						myimg.src = link;
 					}
-					// console.log(link);
-					//returnVal = obj[0].images[(obj[0].images).length - 1];
-					//return link;
-					console.log(link);
-					let div = document.getElementById(skuID);
-					console.log(div);
-					// console.log(skuID);
-					// console.log(div);
-				//	console.log("print link: " + link);
-				//	arrayLink.push(link);
-					//console.log(typeof(link));
+//					let div = document.getElementById(skuID);
 				} 
 			} 
 		} 
@@ -170,7 +162,7 @@ function insertIntoItems(item){
 
     let paragraph = document.createElement("P");
     paragraph.innerHTML =  innerHTML = item[1];
-	image.alt = ":D";
+	image.alt = "Food";
 	image.src = "https://via.placeholder.com/150";
     div_box.appendChild(id);
     div_box.appendChild(image);

@@ -1,5 +1,3 @@
-import {getAllProduct} from './temp_script.js';
-
 $(document).ready(
     function() {
         setInterval(function() {
